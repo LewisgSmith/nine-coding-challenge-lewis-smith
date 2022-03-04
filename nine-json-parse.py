@@ -1,11 +1,17 @@
 import json
-from operator import truediv
 f = open('test.json')
 data = json.load(f)
 
-response = {"error": "Could not decode request: JSON parsing failed"}
-
+responseList = []
+    #initialising list variable
 for i in data['payload']:
+    #for the data
         if i.get('drm') == True and i.get('episodeCount') > 0:
-            print i.get('drm')
-            print i.get('episodeCount')
+            #Checks that the given criteria are both true
+            entry = [i.get('image'), i.get('slug'), i.get('title')]
+            #sets the entry as a list - change this to dict for JSON
+            responseList.append(entry)
+            #adds the entry to the list of correct data
+response = json.dumps(responseList)
+# Change dumps to dump, as that will allow for output to JSON
+print(response)
