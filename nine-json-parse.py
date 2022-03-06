@@ -2,13 +2,13 @@ import json
 import requests
 f = open('test.json')
 
-#data = json.load(f) - loading from the file
+#requests.post('https://nine-coding-challenge-lsmith.herokuapp.com/', json=json.dump("new.csv", f))
 url = requests.get("https://jsonplaceholder.typicode.com/todos/1")
 output = json.loads(url.text)
-
 print(output)
 
 def filter():
+    #data = json.load(f) - loading from the file
     responseList = []
     #initialising list variable
     for i in data['payload']:
