@@ -1,17 +1,24 @@
 import json
+import requests
 f = open('test.json')
-data = json.load(f)
 
-responseList = []
+#data = json.load(f) - loading from the file
+url = requests.get("https://jsonplaceholder.typicode.com/todos/1")
+output = json.loads(url.text)
+
+print(output)
+
+def filter():
+    responseList = []
     #initialising list variable
-for i in data['payload']:
-    #for the data
+    for i in data['payload']:
+         #for the data
         if i.get('drm') == True and i.get('episodeCount') > 0:
             #Checks that the given criteria are both true
             entry = [i.get('image'), i.get('slug'), i.get('title')]
             #sets the entry as a list - change this to dict for JSON
             responseList.append(entry)
             #adds the entry to the list of correct data
-response = json.dumps(responseList)
-# Change dumps to dump, as that will allow for output to JSON
-print(response)
+            response = json.dumps(responseList)
+            # Change dumps to dump, as that will allow for output to JSON
+            print(response)
