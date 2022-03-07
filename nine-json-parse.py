@@ -26,6 +26,6 @@ def filter(data):
         )
 
 #requests.post('https://nine-coding-challenge-lsmith.herokuapp.com/', json=json.dump("new.csv", f))
-url = requests.get("https://mocki.io/v1/39cd8b16-b3fc-4929-a0b2-fd3565d7f08d")
+url = requests.get("https://mocki.io/v1/39cd8b16-b3fc-4929-a0b2-fd3565d7f08d", timeout="none")
 output = json.loads(url.text)
-filter(output)
+print(filter(output))
