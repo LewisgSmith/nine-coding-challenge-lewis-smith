@@ -1,6 +1,5 @@
 import json
 import requests
-f = open('test.json')
 
 def filter(data):
     #data = json.load(f) - loading from the file
@@ -16,8 +15,8 @@ def filter(data):
             #adds the entry to the list of correct data
             response = json.dumps(responseList)
             # Change dumps to dump, as that will allow for output to JSON
-            print(response)
-            
+    return json.dumps(response)
+
 #requests.post('https://nine-coding-challenge-lsmith.herokuapp.com/', json=json.dump("new.csv", f))
 url = requests.get("https://mocki.io/v1/39cd8b16-b3fc-4929-a0b2-fd3565d7f08d")
 output = json.loads(url.text)
