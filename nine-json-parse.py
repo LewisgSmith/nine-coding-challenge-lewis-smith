@@ -16,7 +16,7 @@ def filter(data):
                 #adds the entry to the list of correct data
                 response = json.dumps(responseList)
                 # Change dumps to dump, as that will allow for output to JSON
-        return json.dumps(response)
+        return json.dumps(response, indent=4)
 
     except ValueError:
         return json.dumps(
