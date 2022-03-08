@@ -1,8 +1,12 @@
 import json
-from logging.handlers import SYSLOG_UDP_PORT
 import requests
-
+import flask
+from flask import request, Flask
 returned_data = {}
+
+app = Flask(__name__)
+
+@app.route("/", methods=['POST'])
 
 def filter(data):
     #j = 0
@@ -14,7 +18,5 @@ def filter(data):
     returnDict = {"response": responseList}
     return json.dumps(returnDict, indent=4)
 
-
-url = requests.get("https://mocki.io/v1/05bdf9aa-28f8-4e75-9698-29ccf8cbda3a", timeout=None)
-output = json.loads(url.text)
-print(filter(output))
+if request.method == 'POST':
+    filter(json.loads(request.form))
