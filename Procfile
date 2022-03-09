@@ -1,2 +1,2 @@
-web: python nine-json-parse.py
-worker: python nine-json-parse.py 
+web: gunicorn hello:app
+worker: python nine-json-parse.py
