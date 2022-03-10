@@ -20,7 +20,11 @@ def filter(data):
 
 def hello():
     if request.method == 'POST':
-        return filter(json.loads(request.form))
+        try:
+            request.form
+            return filter(json.loads(request.form))
+        except:
+            return "<h1 style='color:red'>No request</h1>"   
     else:
         return "<h1 style='color:blue'>Hello There!</h1>"
 
