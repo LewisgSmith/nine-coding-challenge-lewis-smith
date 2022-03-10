@@ -1,1 +1,1 @@
-web: gunicorn nine-json-parse.py:app --preload
+web: gunicorn nine-json-parse:app --preload
