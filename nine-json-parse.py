@@ -6,7 +6,7 @@ from flask import request, Flask
 returned_data = {}
 
 app = Flask(__name__)
-@app.route("/", methods=['POST'])
+@app.route("/", methods=['POST', 'GET'])
 
 def filter(data):
     #j = 0
@@ -20,8 +20,9 @@ def filter(data):
 
 def hello():
     if request.method == 'POST':
-        filter(json.loads(request.form))
-    return "<h1 style='color:blue'>Hello There!</h1>"
+        return filter(json.loads(request.form))
+    else:
+        return "<h1 style='color:blue'>Hello There!</h1>"
 
 if __name__ == "__name__":
     app.run(host='0.0.0.0')
