@@ -5,8 +5,6 @@ import gunicorn
 from flask import request, Flask
 returned_data = {}
 
-
-
 app = Flask(__name__)
 @app.route("/", methods=['POST'])
 
@@ -20,5 +18,10 @@ def filter(data):
     returnDict = {"response": responseList}
     return json.dumps(returnDict, indent=4)
 
-if request.method == 'POST':
-    filter(json.loads(request.form))
+def hello():
+    if request.method == 'POST':
+        filter(json.loads(request.form))
+    return "<h1 style='color:blue'>Hello There!</h1>"
+
+if __name__ == "__name__":
+    app.run(host='0.0.0.0')
